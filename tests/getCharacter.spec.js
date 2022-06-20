@@ -43,13 +43,30 @@ Retorno:
 
 describe('9 - Implemente os casos de teste da função `getCharacter`', () => {
   it('Verifica se a função `getCharacter` retorna o objeto do personagem corretamente.', () => {
-    fail('Teste vazio!');
+    // fail('Teste vazio!');
     // ESCREVA SEUS TESTES ABAIXO:
     // Teste se a função, quando não recebe nenhum parâmetro, retorna undefined.
+    expect(getCharacter()).toBeUndefined()
     // Teste se a função retorna o objeto correto para o parâmetro 'Arya',
+    const dados = getCharacter('Arya');
+    expect(dados.name).toEqual('Arya Stark');
+    expect(dados.class).toEqual('Rogue');
+    expect(dados.phrases).toEqual(['Not today', 'A girl has no name.']);
     // Teste se a função retorna o objeto correto para o parâmetro 'Brienne',
+    const dados2 = getCharacter('Brienne');
+    expect(dados2.name).toEqual('Brienne Tarth');
+    expect(dados2.class).toEqual('Knight');
+    expect(dados2.phrases).toEqual(['Im No Lady, Your Grace.', 'I, Brienne Of Tarth, Sentence You To Die.']);
     // Teste se a função retorna o objeto correto para o parâmetro 'Melissandre',
+    const dados3 = getCharacter('Melissandre');
+    expect(dados3.name).toEqual('Melissandre');
+    expect(dados3.class).toEqual('Necromancer');
+    expect(dados3.phrases).toEqual(['Death By Fire Is The Purest Death.', 'For The Night Is Dark And Full Of Terrors.']);
     // Teste se o parâmetro não é Case Sensitive, ou seja, independente de conter letras maiúsculas ou minúsculas retorna o mesmo objeto relativo a ele.
+    expect(getCharacter('Arya')).toEqual({name: 'Arya Stark', class: 'Rogue', phrases: ['Not today', 'A girl has no name.']});
+    expect(getCharacter('arYa')).toEqual({name: 'Arya Stark', class: 'Rogue', phrases: ['Not today', 'A girl has no name.']});
+    expect(getCharacter('ARYA')).toEqual({name: 'Arya Stark', class: 'Rogue', phrases: ['Not today', 'A girl has no name.']});
     // Teste se ao passar um nome que não está na tabela, a função retorna undefined.
+    expect(getCharacter('rolwane')).toBeUndefined();
   });
 });
